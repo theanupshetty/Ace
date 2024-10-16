@@ -18,14 +18,14 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
+    - name: Clean build
+      run: dotnet clean backend/microservices/user-service/user-service.csproj
+
     - name: Restore dependencies
-      run: dotnet restore
-      working-directory: backend/microservices
+      run: dotnet restore backend/microservices/user-service/user-service.csproj
 
     - name: Build
-      run: dotnet build --no-restore
-      working-directory: backend/microservices
+      run: dotnet build backend/microservices/user-service/user-service.csproj --no-restore
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
-      working-directory: backend/microservices
+      run: dotnet test backend/microservices/user-service/user-service.csproj --no-build --verbosity normal
